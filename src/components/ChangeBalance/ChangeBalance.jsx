@@ -1,40 +1,39 @@
+import { useState, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useState } from 'react';
 import { updateBalance } from '../../redux/transactions/operations';
 import { StyledForm } from './Styles';
 import { LightModalWindow } from 'components/LightModalWindow/LightModalWindow';
 
 import ModalWindow from '../ModalWindow/ModalWindow';
-import { useRef } from 'react';
 
 const ChangeBalance = () => {
+  const [modalOpen, setModalOpen] = useState(false);
+  const form = useRef();
   const stateBalance = useSelector(state => state.transactions.newBalance);
   const dispatch = useDispatch();
-  const [modalOpen, setModalOpen] = useState(false);
   let balance;
-  const form = useRef();
-
+  // Handle Submit
   const handleSubmit = evt => {
     evt.preventDefault();
     balance = evt.target.balance.value;
   };
-
+  // Handle update users balance
   const handleClick = () => {
     dispatch(updateBalance({ newBalance: balance }));
-
     form.current.reset();
   };
-
+  // Open modal window
   const handleModalOpen = () => {
     setModalOpen(true);
   };
-
+  // Close modal window
   const handleModalClose = () => {
     setModalOpen(false);
   };
 
   return (
     <>
+      {/* Change balance form */}
       <StyledForm onSubmit={handleSubmit} ref={form}>
         <h2 className="title">Balance:</h2>
         <input
@@ -51,7 +50,7 @@ const ChangeBalance = () => {
         </button>
         {!stateBalance && <ModalWindow />}
       </StyledForm>
-
+      {/* Confirm change balance modal window */}
       {modalOpen && (
         <LightModalWindow
           changeBalance="true"

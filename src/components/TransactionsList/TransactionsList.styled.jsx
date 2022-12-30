@@ -35,7 +35,7 @@ export const ItemDate = styled.p`
   letter-spacing: 0.04em;
 `;
 
-export const ItemCategoty = styled.p`
+export const ItemCategory = styled.p`
   font-size: 8px;
   line-height: 1.12;
   letter-spacing: 0.04em;

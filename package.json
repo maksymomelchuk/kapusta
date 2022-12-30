@@ -14,6 +14,7 @@
     "gsap": "^3.11.4",
     "handy-svg": "^1.0.8",
     "notiflix": "^3.2.5",
+    "prop-types": "^15.8.1",
     "react": "^18.1.0",
     "react-chartjs-2": "^5.1.0",
     "react-datepicker": "^4.8.0",

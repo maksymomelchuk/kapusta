@@ -7,12 +7,13 @@ import {
   ItemDate,
   ItemDateCont,
   ItemStyled,
-  ItemCategoty,
+  ItemCategory,
   Sum,
   SumCont,
   StyledList,
 } from './TransactionsList.styled';
 import { deleteTransaction } from 'redux/transactions/operations';
+import { categoryOrkToEng } from 'hooks/useCategory';
 
 export const TransactionsList = () => {
   const allTransactions = useSelector(selectAllTransactions);
@@ -50,7 +51,7 @@ export const TransactionsList = () => {
               <ItemName>{description}</ItemName>
               <ItemDateCont>
                 <ItemDate>{date.split('-').reverse().join('.')}</ItemDate>
-                <ItemCategoty>{category}</ItemCategoty>
+                <ItemCategory>{categoryOrkToEng(category)}</ItemCategory>
               </ItemDateCont>
             </ItemNameCont>
             <SumCont>

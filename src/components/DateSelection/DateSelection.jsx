@@ -1,9 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 import { StyledDatePicker } from './Styles';
 import { ReactComponent as Calendar } from './calendar.svg';
-import 'react-datepicker/dist/react-datepicker.css';
 
+// React Datepicker
 const DateSelection = ({ startDate, setStartDate }) => {
   const handleClick = event => {
     event.preventDefault();
@@ -32,3 +34,8 @@ const DateSelection = ({ startDate, setStartDate }) => {
 };
 
 export default DateSelection;
+
+DateSelection.propTypes = {
+  startDate: PropTypes.instanceOf(Date),
+  setStartDate: PropTypes.func.isRequired,
+};
