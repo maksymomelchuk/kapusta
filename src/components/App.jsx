@@ -24,20 +24,20 @@ export const App = () => {
   const dispatch = useDispatch();
   const token = useSelector(selectToken);
   const isFetchingUser = useSelector(selectIsFetcingCurrentUser);
-  const location = window.location;
-  const urlSearchParams = new URLSearchParams(location.search);
-  const accessToken = urlSearchParams.get('accessToken');
+  // const location = window.location;
+  // const urlSearchParams = new URLSearchParams(location.search);
+  // const accessToken = urlSearchParams.get('accessToken');
 
-  useEffect(() => {
-    if (accessToken) {
-      if (location.pathname === '/') {
-        location.pathname = '/home';
-        setAuthHeader(accessToken);
-        dispatch(addAccessToken(accessToken));
-        dispatch(refreshUser());
-      }
-    }
-  }, [accessToken, dispatch, location]);
+  // useEffect(() => {
+  //   if (accessToken) {
+  //     if (location.pathname === '/') {
+  //       location.pathname = '/home';
+  //       setAuthHeader(accessToken);
+  //       dispatch(addAccessToken(accessToken));
+  //       dispatch(refreshUser());
+  //     }
+  //   }
+  // }, [accessToken, dispatch, location]);
   //
   const { isMobile } = useMatchMedia();
   useEffect(() => {
