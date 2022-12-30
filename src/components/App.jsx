@@ -30,11 +30,10 @@ export const App = () => {
 
   useEffect(() => {
     if (accessToken) {
-      setAuthHeader(accessToken);
-      dispatch(addAccessToken(accessToken));
-      dispatch(refreshUser());
       if (location.pathname === '/') {
         location.pathname = '/home';
+        setAuthHeader(accessToken);
+        dispatch(addAccessToken(accessToken));
         dispatch(refreshUser());
       }
     }
