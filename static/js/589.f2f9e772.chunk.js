@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkkapusta=self.webpackChunkkapusta||[]).push([[589],{53:function(a,e,s){s(2791);e.Z=s.p+"static/media/kapustaTab.a72993004324294402ab8e5247cddef8.svg"},3108:function(a,e,s){a.exports=s.p+"static/media/bgDeskKapusta.3c521e1a9dee90b85702.png"}}]);
+//# sourceMappingURL=589.f2f9e772.chunk.js.map
