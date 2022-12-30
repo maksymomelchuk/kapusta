@@ -11,6 +11,7 @@ import { PublicRoute } from './PublicRoute/PublicRoute';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useMatchMedia } from 'hooks/use-match-media';
+import ThereIsNoSuchPage from 'pages/ThereIsNoSuchPage/ThereIsNoSuchPage';
 
 const ExpensesPage = lazy(() => import('../pages/ExpensesPage/ExpensesPage'));
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
@@ -82,6 +83,7 @@ export const App = () => {
                 <Route path="/register" element={<RegiserPage />} />
                 <Route path="*" element={<Navigate to="/login" />} />
               </Route>
+              <Route path="*" element={<ThereIsNoSuchPage />} />
             </Route>
           </Routes>
         </BrowserRouter>
