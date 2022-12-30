@@ -18,9 +18,6 @@ const IncomePage = lazy(() => import('../pages/IncomePage/IncomePage'));
 const LoginPage = lazy(() => import('../pages/LoginPage/LoginPage'));
 const RegiserPage = lazy(() => import('../pages/RegisterPage/RegisterPage'));
 const ReportsPage = lazy(() => import('../pages/ReportsPage/ReportsPage'));
-const ThereIsNoSuchPage = lazy(() =>
-  import('../pages/ThereIsNoSuchPage/ThereIsNoSuchPage')
-);
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -36,7 +33,7 @@ export const App = () => {
       dispatch(addAccessToken(accessToken));
       dispatch(refreshUser());
       if (location.pathname === '/') {
-        location.pathname = '/kapusta/home';
+        location.pathname = '/home';
         dispatch(refreshUser());
       }
     }
@@ -55,7 +52,7 @@ export const App = () => {
   return (
     !isFetchingUser && (
       <>
-        <BrowserRouter basename="kapusta">
+        <BrowserRouter basename="">
           <ToastContainer />
           <Routes>
             <Route path="/" element={<SharedLayouts />}>
@@ -85,8 +82,6 @@ export const App = () => {
                 <Route path="/register" element={<RegiserPage />} />
                 <Route path="*" element={<Navigate to="/login" />} />
               </Route>
-
-              <Route path="*" element={<ThereIsNoSuchPage />} />
             </Route>
           </Routes>
         </BrowserRouter>
