@@ -2,7 +2,7 @@
   "name": "kapusta",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://maksymomelchuk.github.io/kapusta/",
+  "homepage": "",
   "dependencies": {
     "@emotion/styled": "^11.10.5",
     "@reduxjs/toolkit": "^1.9.1",
