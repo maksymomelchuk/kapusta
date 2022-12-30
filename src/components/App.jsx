@@ -84,6 +84,7 @@ export const App = () => {
               </Route>
               <Route path="*" element={<ThereIsNoSuchPage />} />
             </Route>
+            <Route path="*" element={<ThereIsNoSuchPage />} />
           </Routes>
         </BrowserRouter>
       </>
