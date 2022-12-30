@@ -12,9 +12,13 @@ import {
   TransactionTabsDesktop,
 } from '../../components/TransactionTabs/TransactionTabs';
 
+// Home page
 export default function HomePage() {
-  const { isMobile } = useMatchMedia();
+  // State
   const [startDate, setStartDate] = useState(new Date());
+  // Hook
+  const { isMobile } = useMatchMedia();
+  // Location
   const location = useLocation();
 
   return (

@@ -1,23 +1,19 @@
 const dateNow = new Date();
 
 export const monthNames = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
-  ];
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
 
-export  const getMonth =()=>{
-    return dateNow.getMonth()
-}
-export  const getYear =()=>{
-    return dateNow.getFullYear()
-}
+export const getMonth = () => dateNow.getMonth();
+export const getYear = () => dateNow.getFullYear();

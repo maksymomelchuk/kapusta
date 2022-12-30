@@ -9,6 +9,7 @@ import {
   fullUserInfoAPI,
 } from 'services/apiAuth';
 
+// Login Thunk
 export const logIn = createAsyncThunk(
   'auth/login',
   async (credentials, thunkAPI) => {
@@ -26,7 +27,7 @@ export const logIn = createAsyncThunk(
     }
   }
 );
-
+// Logout Thunk
 export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
     await logoutAPI();
@@ -35,7 +36,7 @@ export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
     thunkAPI.rejectWithValue(error.message);
   }
 });
-
+// Refresh user Thunk
 export const refreshUser = createAsyncThunk(
   'auth/refreshUser',
   async (_, thunkAPI) => {

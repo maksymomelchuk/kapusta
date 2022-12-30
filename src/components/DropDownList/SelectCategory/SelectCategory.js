@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import arrow from '../../../images/arrow-bottom.svg';
 import { Category, Wrap, SelectBody, Element } from './SelectCategory.styled';
 
+// Custom selector
 export default function SelectCategory({
   elementCategory,
   setElementCategory,
@@ -36,3 +38,9 @@ export default function SelectCategory({
     </Category>
   );
 }
+
+SelectCategory.propTypes = {
+  elementCategory: PropTypes.string.isRequired,
+  setElementCategory: PropTypes.func.isRequired,
+  categoryArray: PropTypes.array.isRequired,
+};

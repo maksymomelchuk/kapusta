@@ -14,8 +14,17 @@ import {
 } from './RegistrationForm.styled';
 
 export const RegistrationForm = () => {
+  // State
+  const [emailDirty, setEmailDirty] = useState(false);
+  const [passwordDirty, setPasswordDirty] = useState(false);
+  const [emailError, setEmaiError] = useState('This is a required field');
+  const [passwordError, setPasswordError] = useState(
+    'This is a required field'
+  );
+  const [errorSymbol, setErrorSymbol] = useState('*');
+  // Dispatch
   const dispatch = useDispatch();
-
+  // Handle Submit
   const handleSubmit = async event => {
     event.preventDefault();
     const { email, password } = event.target.elements;
@@ -70,14 +79,6 @@ export const RegistrationForm = () => {
       setPasswordError('');
     }
   };
-
-  const [emailDirty, setEmailDirty] = useState(false);
-  const [passwordDirty, setPasswordDirty] = useState(false);
-  const [emailError, setEmaiError] = useState('This is a required field');
-  const [passwordError, setPasswordError] = useState(
-    'This is a required field'
-  );
-  const [errorSymbol, setErrorSymbol] = useState('*');
 
   return (
     <StyledformRegister onSubmit={handleSubmit}>

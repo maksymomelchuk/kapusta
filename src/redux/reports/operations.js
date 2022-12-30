@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { getPeriodDataAPI } from 'services/apiTransactions';
 
+// Get reports Thunk
 export const getReports = createAsyncThunk(
   'reports/getReports',
   async (value, thunkAPI) => {

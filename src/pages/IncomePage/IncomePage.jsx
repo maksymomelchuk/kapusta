@@ -1,7 +1,6 @@
-import { TransactionListDesk } from 'components/TransactionListDesk/TransactionListDesk';
-import React from 'react';
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { TransactionListDesk } from 'components/TransactionListDesk/TransactionListDesk';
 import {
   selectIncomeTransactions,
   selectIsLoggedIn,
@@ -18,14 +17,18 @@ import {
 import Form from 'components/DropDownList/Form/Form';
 import { Summary } from 'components/Summary/Summary';
 
+// Incomes page
 export default function IncomePage() {
-  const { isMobile, isTablet, isDesktop } = useMatchMedia();
+  // Dispatch
   const dispatch = useDispatch();
+  // Hook
+  const { isMobile, isTablet, isDesktop } = useMatchMedia();
+  // Selectors
   const allIncomes = useSelector(selectIncomeTransactions);
-  const color = 'green';
   const user = useSelector(selectIsLoggedIn);
   const balance = useSelector(selectBalance);
-
+  const color = 'green';
+  // Get incomes data
   useEffect(() => {
     if (user) dispatch(getIncome());
   }, [dispatch, user, balance]);

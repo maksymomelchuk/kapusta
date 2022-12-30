@@ -1,3 +1,4 @@
+// Translate categories
 export const categoryEngToOrk = name => {
   switch (name.trim()) {
     case 'Products':

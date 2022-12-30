@@ -1,3 +1,7 @@
+import { useRef, useState } from 'react';
+import { useLocation } from 'react-router';
+import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
 import { useMatchMedia } from '../../../hooks/use-match-media';
 import DateSelection from '../../DateSelection/DateSelection';
 import SelectCategory from '../SelectCategory/SelectCategory';
@@ -11,23 +15,26 @@ import {
   StyledAllInputsDiv,
   StyledWhiteButton,
 } from './Form.styled';
-import { useRef, useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { addExpense, addIncome } from 'redux/transactions/operations';
-import { toast } from 'react-toastify';
-import { useLocation } from 'react-router';
 import { categoryEngToOrk } from 'hooks/useCategory';
 
+// Form to add incomes or expenses
 export default function Form() {
-  const form = useRef(null);
-  const dispatch = useDispatch();
-  const { isMobile } = useMatchMedia();
-  const [startDate, setStartDate] = useState(new Date());
+  // State
   const [elementCategory, setElementCategory] = useState('Category');
+  const [startDate, setStartDate] = useState(new Date());
+  // Location
   const location = useLocation();
+  // Refs
+  const form = useRef(null);
+  // Dispatch
+  const dispatch = useDispatch();
+  // Check for device
+  const { isMobile } = useMatchMedia();
+
   let categoryArray;
   let functionToDispatch;
-
+  // Check location for submit incomes or expenses
   if (location.pathname === '/home/income' || location.pathname === '/income') {
     categoryArray = ['Salary', 'Additional income'];
     functionToDispatch = addIncome;
@@ -51,7 +58,7 @@ export default function Form() {
     ];
     functionToDispatch = addExpense;
   }
-
+  // Handle Submit
   const handleSubmit = event => {
     event.preventDefault();
     const { descr, sum } = event.target.elements;
@@ -83,7 +90,7 @@ export default function Form() {
     event.target.reset();
     setElementCategory('Category');
   };
-
+  // Reset Form
   const handleReset = () => {
     form.current.reset();
   };
@@ -96,16 +103,22 @@ export default function Form() {
             <DateSelection startDate={startDate} setStartDate={setStartDate} />
           </div>
         )}
+        {/* Form */}
         <StyledForm onSubmit={handleSubmit} ref={form}>
+          {/* Div with inputs */}
           <StyledAllInputsDiv>
+            {/* Product input */}
             <InputProduct placeholder="Product description" name="descr" />
+            {/* Category input */}
             <SelectCategory
               categoryArray={categoryArray}
               elementCategory={elementCategory}
               setElementCategory={setElementCategory}
             />
+            {/* Value input */}
             <CalculatorInput name="sum" />
           </StyledAllInputsDiv>
+          {/* Div with buttons */}
           <ButtonWrap>
             <OrangeButton type="submit">INPUT</OrangeButton>
             <StyledWhiteButton type="button" onClick={handleReset}>

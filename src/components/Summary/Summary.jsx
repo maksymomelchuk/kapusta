@@ -1,11 +1,11 @@
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router';
+import { monthNameOrkToEng } from 'hooks/useMonthTranslate';
 import {
   selectIncomeSummary,
   selectExpensesSummary,
   selectIsLoading,
 } from 'redux/selectors';
-import { monthNameOrkToEng } from 'hooks/useMonthTranslate';
 import {
   StyledTable,
   StyledRow,
@@ -15,7 +15,9 @@ import {
 } from './Summary.styled';
 
 export const Summary = () => {
+  // Location
   const location = useLocation();
+  // Selectors
   const isLoading = useSelector(selectIsLoading);
   const incomeData = useSelector(selectIncomeSummary);
   const expensesData = useSelector(selectExpensesSummary);

@@ -45,8 +45,6 @@ export const store = configureStore({
         ignoredPaths: ['items.dates'],
       },
     }),
-
-  // devTools: process.env.NODE_ENV === 'development',
 });
 
 export const persistor = persistStore(store);

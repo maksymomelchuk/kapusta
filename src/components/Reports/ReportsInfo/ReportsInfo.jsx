@@ -1,3 +1,6 @@
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectReports } from 'redux/selectors';
 import { ReportsList } from './List/ReportsList';
 import { ReportsTable } from './Table/ReportsTable';
 import { filteredDataAction } from 'redux/reportsQuery/reportsQuery.slice';
@@ -11,28 +14,26 @@ import {
   NavText,
   Box,
 } from './ReportsInfo.styled';
-// import reports from '../../../images/reportsFiles/reports.svg';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectReports } from 'redux/selectors';
-import { useState } from 'react';
 import { ButtonsNextPrev } from '../ReportsNav/Slider/ButtonsNextPrev/ButtonsNextPrev';
 
+// Reports Info
 export const ReportsInfo = () => {
+  // State
+  const [budget, setBudget] = useState('expenses');
+  // Selectors
   const { reports } = useSelector(selectReports);
-  const [budget, setBudget] = useState('expenses')
-const dispatch = useDispatch()
-
-
-
-const handleClick = () =>{
-      if(budget==='expenses'){
-        setBudget('income')
-        dispatch(filteredDataAction([]))
-        return
-      }
-      setBudget('expenses')
-      dispatch(filteredDataAction([]))
-}
+  // Dispatch
+  const dispatch = useDispatch();
+  // Handle click
+  const handleClick = () => {
+    if (budget === 'expenses') {
+      setBudget('income');
+      dispatch(filteredDataAction([]));
+      return;
+    }
+    setBudget('expenses');
+    dispatch(filteredDataAction([]));
+  };
   return (
     <div>
       <List>
@@ -47,9 +48,9 @@ const handleClick = () =>{
       </List>
 
       <Box>
-        <Nav className='Privet'>
+        <Nav className="Privet">
           <ButtonsNextPrev onButtonClick={handleClick}>
-          <NavText>{budget}</NavText>
+            <NavText>{budget}</NavText>
           </ButtonsNextPrev>
         </Nav>
 

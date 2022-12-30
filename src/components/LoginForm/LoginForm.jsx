@@ -16,9 +16,20 @@ import {
 } from './LoginForm.styled';
 import { logIn } from 'redux/auth/operations';
 
+// Login form
 export const LoginForm = () => {
+  // State
+  const [emailDirty, setEmailDirty] = useState(false);
+  const [passwordDirty, setPasswordDirty] = useState(false);
+  const [emailError, setEmaiError] = useState('This is a required field');
+  const [passwordError, setPasswordError] = useState(
+    'This is a required field'
+  );
+  const [errorSymbol, setErrorSymbol] = useState('*');
+  // Dispatch
   const dispatch = useDispatch();
 
+  // Handle submit
   const handleSubmit = event => {
     event.preventDefault();
     const { email, password } = event.target.elements;
@@ -38,6 +49,7 @@ export const LoginForm = () => {
         return;
     }
   };
+  // Email verification
   const emailHandler = e => {
     const re =
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -52,7 +64,7 @@ export const LoginForm = () => {
       setEmaiError('');
     }
   };
-
+  // Password verification
   const passwordHandler = e => {
     if (e.target.value.length < 8) {
       setPasswordError('Password must be at least 8 characters');
@@ -64,26 +76,23 @@ export const LoginForm = () => {
     }
   };
 
-  const [emailDirty, setEmailDirty] = useState(false);
-  const [passwordDirty, setPasswordDirty] = useState(false);
-  const [emailError, setEmaiError] = useState('This is a required field');
-  const [passwordError, setPasswordError] = useState(
-    'This is a required field'
-  );
-  const [errorSymbol, setErrorSymbol] = useState('*');
-
   return (
-    <StyledformRegister onSubmit={handleSubmit}>
+    // Div
+    <StyledformRegister>
+      {/* Google authorization text */}
       <StyledpromtText>
         You can log in with your Google Account:
       </StyledpromtText>
+      {/* Google button */}
       <StyledLinkbtnGoogle href="https://kapusta-backend.goit.global/auth/google">
         <GoogleSvg />
       </StyledLinkbtnGoogle>
+      {/* Authorization text */}
       <StyledpromtText1>
         Or log in using an email and password, after registering:
       </StyledpromtText1>
-      <form action="" autoComplete="on">
+      {/* Form */}
+      <form action="" autoComplete="on" onSubmit={handleSubmit}>
         <Styledlabel>
           <StyledlabelText>
             {emailDirty && emailError && (

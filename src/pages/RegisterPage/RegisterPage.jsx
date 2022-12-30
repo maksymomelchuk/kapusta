@@ -27,10 +27,11 @@ import groupTablet from '../../images/groupTablet.png';
 import groupDesktop from '../../images/groupDesktop.png';
 import halfKapusta from '../../images/half.png';
 
+// Register page
 export default function RegisterPage() {
-  const { isMobile } = useMatchMedia();
-  const { isTablet } = useMatchMedia();
-  const { isDesktop } = useMatchMedia();
+  // Hook
+  const { isMobile, isTablet, isDesktop } = useMatchMedia();
+
   return (
     <StyledRegisterPage>
       <Background
@@ -38,13 +39,14 @@ export default function RegisterPage() {
         imgTabUrl={imageTabBg}
         imgDeskUrl={imageDeskBg}
       >
+        {/* For mobile */}
         {isMobile && (
           <>
             <KapustaMobTop src={halfKapusta} alt="bg" />
             <KapustaMobBottom src={kapusta} width="83" height="89" />
           </>
         )}
-
+        {/* For tablet */}
         {isTablet && (
           <>
             <GroupTablet src={groupTablet} alt="bg" />
@@ -55,6 +57,7 @@ export default function RegisterPage() {
             <ShadowTabBotRight src={tabShadow} width="83" height="89" />
           </>
         )}
+        {/* For desktop */}
         {isDesktop && (
           <>
             <GroupDesktop src={groupDesktop} alt="bg" />

@@ -27,7 +27,9 @@ import groupTablet from '../../images/groupTablet.png';
 import groupDesktop from '../../images/groupDesktop.png';
 import halfKapusta from '../../images/half.png';
 
+// Login page
 export default function LoginPage() {
+  // Hook
   const { isMobile, isTablet, isDesktop } = useMatchMedia();
   return (
     <>
@@ -37,13 +39,14 @@ export default function LoginPage() {
           imgTabUrl={imageTabBg}
           imgDeskUrl={imageDeskBg}
         >
+          {/* For mobile */}
           {isMobile && (
             <>
               <KapustaMobTop src={halfKapusta} alt="bg" />
               <KapustaMobBottom src={kapusta} width="83" height="89" />
             </>
           )}
-
+          {/* For Tablet */}
           {isTablet && (
             <>
               <GroupTablet src={groupTablet} alt="bg" />
@@ -53,6 +56,7 @@ export default function LoginPage() {
               <ShadowTabBotRight src={tabShadow} width="83" height="89" />
             </>
           )}
+          {/* For desktop */}
           {isDesktop && (
             <>
               <GroupDesktop src={groupDesktop} alt="bg" />

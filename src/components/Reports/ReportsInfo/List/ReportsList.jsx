@@ -1,33 +1,35 @@
+import { useState, useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectReports } from 'redux/selectors';
-import reportsIcon from '../../../../images/reportsFiles/reports.svg';
-import { List, Item, ItemIncome, ItemSvg, BgcSvg } from './ReportsList.styled';
-import { useState, useEffect, useMemo } from 'react';
 import { categoryOrkToEng } from 'hooks/useCategory';
 import { filteredDataAction } from 'redux/reportsQuery/reportsQuery.slice';
+import reportsIcon from '../../../../images/reportsFiles/reports.svg';
+import { List, Item, ItemIncome, ItemSvg, BgcSvg } from './ReportsList.styled';
 import BgcIcon from '../../../../images/reportsFiles/bgcForSvg.svg';
 import OrangeBgc from '../../../../images/orangeBgc.svg';
 
+// Reports List
 export const ReportsList = ({ onChange }) => {
+  // State
   const [active, setActive] = useState('');
-  const { reports } = useSelector(selectReports);
   const [data, setData] = useState({});
+  // Selectors
+  const { reports } = useSelector(selectReports);
+  // Dispatch
   const dispatch = useDispatch();
+  // Vars
   const valueArr = [];
-
-  // const expensesData = reports?.expenses?.expensesData ?? {};
-
+  // Expenses Data
   const expensesData = useMemo(
     () => reports?.expenses?.expensesData ?? {},
     [reports]
   );
-
-  // const incomesData = reports?.incomes?.incomesData ?? {};
+  // Incomes Data
   const incomesData = useMemo(
     () => reports?.incomes?.incomesData ?? {},
     [reports]
   );
-
+  // Check if expenses or incomes data
   useEffect(() => {
     if (onChange === 'expenses') {
       setData(expensesData ?? {});
@@ -37,7 +39,7 @@ export const ReportsList = ({ onChange }) => {
       setActive('');
     }
   }, [onChange, expensesData, incomesData]);
-
+  // Click handler
   const clickEventHandler = event => {
     setActive(event.currentTarget.id);
     const filteredValueArr = valueArr.filter(
@@ -45,12 +47,9 @@ export const ReportsList = ({ onChange }) => {
     );
     dispatch(filteredDataAction(filteredValueArr));
   };
+  // Transform object to array
   const entries = Object.entries(data) ?? [];
-  // const values = Object.values(data);
 
-  // setValueData(values);
-
-  // const incomesEnties = Object.entries(incomesData) ?? [];
   return (
     <div>
       <List className={onChange === 'income' ? 'incomeList' : ''}>

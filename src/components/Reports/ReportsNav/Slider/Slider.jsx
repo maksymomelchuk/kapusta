@@ -1,28 +1,29 @@
-import { SliderBox, SliderText } from './Slider.styled';
-import React, { useState } from 'react';
-import { useEffect } from 'react';
-import { monthNames, getMonth, getYear } from './SliderUtils';
-import { Calendar } from './Calendar/Calendar';
-import { ButtonsNextPrev } from './ButtonsNextPrev/ButtonsNextPrev';
-
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { getReports } from 'redux/reports/operations';
+import { monthNames, getMonth, getYear } from './SliderUtils';
+import { Calendar } from './Calendar/Calendar';
+import { SliderBox, SliderText } from './Slider.styled';
+import { ButtonsNextPrev } from './ButtonsNextPrev/ButtonsNextPrev';
 import { reportsQueryAction } from 'redux/reportsQuery/reportsQuery.slice';
 import { filteredDataAction } from 'redux/reportsQuery/reportsQuery.slice';
 
+// Slider
 export const Slider = () => {
+  // State
   const [monthNumber, setMonthNumber] = useState(0);
   const [month, setMonth] = useState('');
   const [year, setYear] = useState('');
   const [modalCalendar, setModalCalendar] = useState(false);
-
+  // Dispatch
   const dispatch = useDispatch();
+  // Set date
   useEffect(() => {
     setMonthNumber(getMonth());
     setMonth(monthNames[getMonth()]);
     setYear(getYear());
   }, []);
-
+  // Dispatch data by date
   useEffect(() => {
     setMonth(monthNames[monthNumber]);
     let monthString = '';
@@ -35,11 +36,8 @@ export const Slider = () => {
     const query = `${year}-${monthString}`;
     if (query !== '-01') dispatch(getReports(query));
     dispatch(reportsQueryAction(`${year}-${monthString}`));
-    // getPeriodDataAPI(`${year}-${monthString}`).then(data => {
-    //   setReports(data);
-    // });
   }, [monthNumber, year, dispatch]);
-
+  // Fetch data by date change
   const handlerClick = name => {
     switch (name) {
       case 'decrement':
@@ -62,11 +60,11 @@ export const Slider = () => {
         return;
     }
   };
-
+  // Show / hide calendar
   const handleModalCalendar = () => {
     setModalCalendar(modalCalendar => !modalCalendar);
   };
-
+  // Handle increment / decrement year
   const handleCalendar = name => {
     switch (name) {
       case 'decrement':

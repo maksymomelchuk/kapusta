@@ -9,6 +9,7 @@ import {
   deleteTransactionAPI,
 } from 'services/apiTransactions';
 
+// AddIncome transaction Thunk
 export const addIncome = createAsyncThunk(
   'transactions/addIncome',
   async (value, thunkAPI) => {
@@ -20,7 +21,7 @@ export const addIncome = createAsyncThunk(
     }
   }
 );
-
+// Get income transactions Thunk
 export const getIncome = createAsyncThunk(
   'transactions/getIncome',
   async (_, thunkAPI) => {
@@ -32,7 +33,7 @@ export const getIncome = createAsyncThunk(
     }
   }
 );
-
+// Add expense transaction Thunk
 export const addExpense = createAsyncThunk(
   'transactions/addExpense',
   async (value, thunkAPI) => {
@@ -44,7 +45,7 @@ export const addExpense = createAsyncThunk(
     }
   }
 );
-
+// Get expenses transactions Thunk
 export const getExpenses = createAsyncThunk(
   'transactions/getExpenses',
   async (_, thunkAPI) => {
@@ -56,7 +57,7 @@ export const getExpenses = createAsyncThunk(
     }
   }
 );
-
+// Update balance Thunk
 export const updateBalance = createAsyncThunk(
   'transactions/updateBalance',
   async (value, thunkAPI) => {
@@ -68,7 +69,7 @@ export const updateBalance = createAsyncThunk(
     }
   }
 );
-
+// Refresh user Thunk
 export const getAllTransactions = createAsyncThunk(
   'transactions/getAllTransactions',
   async (_, thunkAPI) => {
@@ -80,7 +81,7 @@ export const getAllTransactions = createAsyncThunk(
     }
   }
 );
-
+// Delete transaction Thunk
 export const deleteTransaction = createAsyncThunk(
   'transactions/deleteTransaction',
   async (id, thunkAPI) => {

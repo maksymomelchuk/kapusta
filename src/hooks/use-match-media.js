@@ -1,5 +1,6 @@
 import { useMediaQuery } from 'react-responsive';
 
+// Check width of display
 export const useMatchMedia = () => {
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
   const isTablet = useMediaQuery({
