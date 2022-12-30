@@ -11,7 +11,6 @@ import { PublicRoute } from './PublicRoute/PublicRoute';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useMatchMedia } from 'hooks/use-match-media';
-import ThereIsNoSuchPage from 'pages/ThereIsNoSuchPage/ThereIsNoSuchPage';
 
 const ExpensesPage = lazy(() => import('../pages/ExpensesPage/ExpensesPage'));
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
@@ -19,25 +18,29 @@ const IncomePage = lazy(() => import('../pages/IncomePage/IncomePage'));
 const LoginPage = lazy(() => import('../pages/LoginPage/LoginPage'));
 const RegiserPage = lazy(() => import('../pages/RegisterPage/RegisterPage'));
 const ReportsPage = lazy(() => import('../pages/ReportsPage/ReportsPage'));
+const ThereIsNoSuchPage = lazy(() =>
+  import('../pages/ThereIsNoSuchPage/ThereIsNoSuchPage')
+);
 
 export const App = () => {
   const dispatch = useDispatch();
   const token = useSelector(selectToken);
   const isFetchingUser = useSelector(selectIsFetcingCurrentUser);
-  // const location = window.location;
-  // const urlSearchParams = new URLSearchParams(location.search);
-  // const accessToken = urlSearchParams.get('accessToken');
+  const location = window.location;
+  const urlSearchParams = new URLSearchParams(location.search);
+  const accessToken = urlSearchParams.get('accessToken');
 
-  // useEffect(() => {
-  //   if (accessToken) {
-  //     if (location.pathname === '/') {
-  //       location.pathname = '/home';
-  //       setAuthHeader(accessToken);
-  //       dispatch(addAccessToken(accessToken));
-  //       dispatch(refreshUser());
-  //     }
-  //   }
-  // }, [accessToken, dispatch, location]);
+  useEffect(() => {
+    if (accessToken) {
+      setAuthHeader(accessToken);
+      dispatch(addAccessToken(accessToken));
+      dispatch(refreshUser());
+      if (location.pathname === '/') {
+        location.pathname = '/kapusta/home';
+        dispatch(refreshUser());
+      }
+    }
+  }, [accessToken, dispatch, location]);
   //
   const { isMobile } = useMatchMedia();
   useEffect(() => {
@@ -52,7 +55,7 @@ export const App = () => {
   return (
     !isFetchingUser && (
       <>
-        <BrowserRouter basename="">
+        <BrowserRouter basename="kapusta">
           <ToastContainer />
           <Routes>
             <Route path="/" element={<SharedLayouts />}>
@@ -82,9 +85,9 @@ export const App = () => {
                 <Route path="/register" element={<RegiserPage />} />
                 <Route path="*" element={<Navigate to="/login" />} />
               </Route>
+
               <Route path="*" element={<ThereIsNoSuchPage />} />
             </Route>
-            <Route path="*" element={<ThereIsNoSuchPage />} />
           </Routes>
         </BrowserRouter>
       </>

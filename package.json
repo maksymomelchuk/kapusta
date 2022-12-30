@@ -2,7 +2,7 @@
   "name": "kapusta",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://serene-horse-ff5ff8.netlify.app",
+  "homepage": "https://maksymomelchuk.github.io/kapusta/",
   "dependencies": {
     "@emotion/styled": "^11.10.5",
     "@reduxjs/toolkit": "^1.9.1",
