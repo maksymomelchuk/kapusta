@@ -5,16 +5,15 @@ import GrayBg from '../../components/GrayBg';
 import ReportsBtn from '../../components/Buttons/ReportsBtn';
 import ChangeBalance from '../../components/ChangeBalance';
 import DateSelection from '../../components/DateSelection';
-import { StyledHomePage, KapustaTab, KapustaDesk } from './Styles';
+import { StyledHomePage } from './Styles';
 import { TransactionsList } from 'components/TransactionsList/TransactionsList';
 import {
   TransactionTabsMobile,
   TransactionTabsDesktop,
 } from '../../components/TransactionTabs/TransactionTabs';
-import kapusta from '../../images/kapustaTab.svg';
 
 export default function HomePage() {
-  const { isMobile, isTablet, isDesktop } = useMatchMedia();
+  const { isMobile } = useMatchMedia();
   const [startDate, setStartDate] = useState(new Date());
   const location = useLocation();
 
