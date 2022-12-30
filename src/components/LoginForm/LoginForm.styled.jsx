@@ -69,10 +69,6 @@ export const Styledlabel = styled.label`
   }
 `;
 
-export const StyledanimationGoogle = styled.div`
-  text-align: center;
-`;
-
 export const LogInBtn = styled(OrangeButton)`
   width: 116px;
 `;

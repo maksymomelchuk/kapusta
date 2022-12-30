@@ -6,6 +6,7 @@ export const StyledRegisterPage = styled.div`
 `;
 
 export const Background = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -36,16 +37,15 @@ export const Background = styled.div`
   }
 `;
 
-export const KapustaMobTop = styled(HandySvg)`
+export const KapustaMobTop = styled.img`
   position: absolute;
-  top: 160px;
-  right: -34px;
-  transform: rotate(-180deg);
+  top: 110px;
+  right: 0px;
 `;
 
 export const KapustaMobBottom = styled(HandySvg)`
   position: absolute;
-  top: 667px;
+  top: 570px;
   left: 35px;
 `;
 
@@ -152,4 +152,16 @@ export const TextWrap = styled.div`
     margin-left: 0;
     margin-right: 157px;
   }
+`;
+
+export const GroupTablet = styled.img`
+  position: absolute;
+  top: 28px;
+  left: 0;
+`;
+
+export const GroupDesktop = styled.img`
+  position: absolute;
+  top: 28px;
+  left: 10px;
 `;

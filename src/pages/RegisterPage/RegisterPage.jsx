@@ -13,14 +13,19 @@ import {
   TextWrap,
   ShadowTabBotRight,
   Text,
+  KapustaMobTop,
+  GroupTablet,
+  GroupDesktop,
 } from './RegisterPage.styled';
-import BackgroundAnimation from '../../components/BackgroundAnimation/BackgroundAnimation';
 import Name from '../../images/union.svg';
 import imageMobBg from '../../images/reportsFiles/backgroundMobile.png';
 import imageTabBg from '../../images/reportsFiles/backgroundTablet.png';
 import imageDeskBg from '../../images/reportsFiles/backgroundDesktop.png';
 import kapusta from '../../images/kapusta.svg';
 import tabShadow from '../../images/tabEllipse.svg';
+import groupTablet from '../../images/groupTablet.png';
+import groupDesktop from '../../images/groupDesktop.png';
+import halfKapusta from '../../images/half.png';
 
 export default function RegisterPage() {
   const { isMobile } = useMatchMedia();
@@ -35,14 +40,15 @@ export default function RegisterPage() {
       >
         {isMobile && (
           <>
-            <BackgroundAnimation />
+            <KapustaMobTop src={halfKapusta} alt="bg" />
             <KapustaMobBottom src={kapusta} width="83" height="89" />
           </>
         )}
 
         {isTablet && (
           <>
-            <BackgroundAnimation />
+            <GroupTablet src={groupTablet} alt="bg" />
+
             <KapustaTabBotLeft src={kapusta} width="83" height="89" />
             <ShadowTabBotLeft src={tabShadow} width="83" height="89" />
             <KapustaTabBotRight src={kapusta} width="83" height="89" />
@@ -51,7 +57,8 @@ export default function RegisterPage() {
         )}
         {isDesktop && (
           <>
-            <BackgroundAnimation />
+            <GroupDesktop src={groupDesktop} alt="bg" />
+
             <KapustaTabBotLeft src={kapusta} width="83" height="89" />
             <ShadowTabBotLeft src={tabShadow} width="83" height="89" />
             <KapustaTabBotRight src={kapusta} width="83" height="89" />

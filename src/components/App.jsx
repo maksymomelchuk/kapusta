@@ -90,10 +90,6 @@ export const App = () => {
             </Route>
           </Routes>
         </BrowserRouter>
-        {/* <LightModalWindow>Are you sure?</LightModalWindow> */}
-        {/* <Summary /> */}
-        {/* <Form /> */}
-        {/* <TransactionsList /> */}
       </>
     )
   );

@@ -4,6 +4,7 @@ import { HandySvg } from 'handy-svg';
 export const StyledLoginPage = styled.div``;
 
 export const Background = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -33,22 +34,21 @@ export const Background = styled.div`
   }
 `;
 
-export const KapustaMobTop = styled(HandySvg)`
+export const KapustaMobTop = styled.img`
   position: absolute;
-  top: 160px;
-  right: -34px;
-  transform: rotate(-180deg);
+  top: 110px;
+  right: 0px;
 `;
 
 export const KapustaMobBottom = styled(HandySvg)`
   position: absolute;
-  top: 767px;
+  top: 690px;
   left: 35px;
 `;
 
 export const KapustaTabBotLeft = styled(HandySvg)`
   position: absolute;
-  top: 870px;
+  top: 800px;
   left: 103px;
   z-index: -1;
 
@@ -60,7 +60,7 @@ export const KapustaTabBotLeft = styled(HandySvg)`
 
 export const KapustaTabBotRight = styled(HandySvg)`
   position: absolute;
-  top: 841px;
+  top: 765px;
   left: 197px;
   z-index: -1;
   transform: rotate(-90deg);
@@ -73,7 +73,7 @@ export const KapustaTabBotRight = styled(HandySvg)`
 
 export const ShadowTabBotLeft = styled(HandySvg)`
   position: absolute;
-  top: 954px;
+  top: 880px;
   left: 108px;
 
   @media screen and (min-width: 1280px) {
@@ -84,7 +84,7 @@ export const ShadowTabBotLeft = styled(HandySvg)`
 
 export const ShadowTabBotRight = styled(HandySvg)`
   position: absolute;
-  top: 938px;
+  top: 860px;
   left: 219px;
 
   @media screen and (min-width: 1280px) {
@@ -149,4 +149,16 @@ export const TextWrap = styled.div`
     margin-left: 0;
     margin-right: 157px;
   }
+`;
+
+export const GroupTablet = styled.img`
+  position: absolute;
+  top: 28px;
+  left: 0;
+`;
+
+export const GroupDesktop = styled.img`
+  position: absolute;
+  top: 28px;
+  left: 10px;
 `;

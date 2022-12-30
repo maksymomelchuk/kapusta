@@ -12,29 +12,11 @@ import {
   TransactionTabsDesktop,
 } from '../../components/TransactionTabs/TransactionTabs';
 import kapusta from '../../images/kapustaTab.svg';
-import kapustaDesktop from '../../images/kapustaDesk.svg';
-// import { setAuthHeader } from 'services/apiAuth';
-// import { addAccessToken } from 'redux/auth/auth.slice';
-// import { refreshUser } from 'redux/auth/operations';
-// import { useDispatch } from 'react-redux';
 
 export default function HomePage() {
   const { isMobile, isTablet, isDesktop } = useMatchMedia();
   const [startDate, setStartDate] = useState(new Date());
   const location = useLocation();
-  // const dispatch = useDispatch();
-  // const token = JSON.parse(
-  //   localStorage.getItem('persist:auth')
-  // ).token.replaceAll('"', '');
-
-  // useEffect(() => {
-  //   if (!token || token === 'null') {
-  //     return;
-  //   }
-  //   setAuthHeader(token);
-  //   dispatch(addAccessToken(token));
-  //   dispatch(refreshUser());
-  // }, [dispatch]);
 
   return (
     <>
@@ -54,10 +36,6 @@ export default function HomePage() {
         {!isMobile && <TransactionTabsDesktop />}
         {!isMobile && <Outlet />}
         {isMobile && <TransactionsList />}
-        {isTablet && <KapustaTab src={kapusta} width="183" height="146" />}
-        {isDesktop && (
-          <KapustaDesk src={kapustaDesktop} width="1334" height="232" />
-        )}
       </StyledHomePage>
     </>
   );

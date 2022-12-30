@@ -3,15 +3,15 @@ import DateSelection from '../../DateSelection/DateSelection';
 import SelectCategory from '../SelectCategory/SelectCategory';
 import CalculatorInput from '../CalculatorInput/CalculatorInput';
 import { OrangeButton } from 'components/Buttons/OrangeButton';
-import { WhiteButton } from 'components/Buttons/WhiteButton';
 import {
   FormWrap,
   StyledForm,
   ButtonWrap,
   InputProduct,
   StyledAllInputsDiv,
+  StyledWhiteButton,
 } from './Form.styled';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addExpense, addIncome } from 'redux/transactions/operations';
 import { toast } from 'react-toastify';
@@ -19,6 +19,7 @@ import { useLocation } from 'react-router';
 import { categoryEngToOrk } from 'hooks/useCategory';
 
 export default function Form() {
+  const form = useRef(null);
   const dispatch = useDispatch();
   const { isMobile } = useMatchMedia();
   const [startDate, setStartDate] = useState(new Date());
@@ -73,7 +74,7 @@ export default function Form() {
     // Prepare data for dispatch
     const dataToDispatch = {
       description: descr.value,
-      amount: Number(transValue), 
+      amount: Number(transValue),
       date: startDate.toISOString().split('T')[0],
       category: categoryEngToOrk(elementCategory),
     };
@@ -81,6 +82,10 @@ export default function Form() {
     dispatch(functionToDispatch(dataToDispatch));
     event.target.reset();
     setElementCategory('Category');
+  };
+
+  const handleReset = () => {
+    form.current.reset();
   };
 
   return (
@@ -91,7 +96,7 @@ export default function Form() {
             <DateSelection startDate={startDate} setStartDate={setStartDate} />
           </div>
         )}
-        <StyledForm onSubmit={handleSubmit}>
+        <StyledForm onSubmit={handleSubmit} ref={form}>
           <StyledAllInputsDiv>
             <InputProduct placeholder="Product description" name="descr" />
             <SelectCategory
@@ -103,7 +108,9 @@ export default function Form() {
           </StyledAllInputsDiv>
           <ButtonWrap>
             <OrangeButton type="submit">INPUT</OrangeButton>
-            <WhiteButton>CLEAR</WhiteButton>
+            <StyledWhiteButton type="button" onClick={handleReset}>
+              CLEAR
+            </StyledWhiteButton>
           </ButtonWrap>
         </StyledForm>
       </FormWrap>

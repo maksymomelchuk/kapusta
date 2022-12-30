@@ -33,7 +33,7 @@ export const TransactionsList = () => {
 
   return (
     <StyledList className="container">
-      {sortedTransactions.slice(0, 7).map(item => {
+      {sortedTransactions.slice(0, 15).map(item => {
         const { _id, description, amount, date, category } = item;
         let color;
         let minus = false;
@@ -49,7 +49,7 @@ export const TransactionsList = () => {
             <ItemNameCont>
               <ItemName>{description}</ItemName>
               <ItemDateCont>
-                <ItemDate>{date}</ItemDate>
+                <ItemDate>{date.split('-').reverse().join('.')}</ItemDate>
                 <ItemCategoty>{category}</ItemCategoty>
               </ItemDateCont>
             </ItemNameCont>

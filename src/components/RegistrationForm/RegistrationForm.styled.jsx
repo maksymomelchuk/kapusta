@@ -25,29 +25,19 @@ export const StyledformRegister = styled.div`
 `;
 
 export const StyledpromtText = styled.p`
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 14px;
+  font-size: 12px;
   line-height: 1.16;
   text-align: center;
   letter-spacing: 0.04em;
   color: #52555f;
   margin-bottom: 16px;
 
-  @media screen and (max-width: 767px) {
-    padding-left: 29px;
-    padding-right: 29px;
-  }
   @media screen and (min-width: 768px) {
     margin-bottom: 20px;
   }
 `;
 
 export const StyledpromtText1 = styled.p`
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 400;
   font-size: 12px;
   line-height: 1.16;
   text-align: left;
@@ -86,8 +76,6 @@ export const StyledLinkbtnGoogle = styled.a`
   border-radius: 26px;
   border: 0;
   padding: 10px 18px 10px 20px;
-  font-family: Roboto;
-  font-style: normal;
   font-weight: 700;
   font-size: 14px;
   text-align: center;

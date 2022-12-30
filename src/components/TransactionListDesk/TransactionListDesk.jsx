@@ -46,7 +46,7 @@ export const TransactionListDesk = ({ children }) => {
             const { _id, description, amount, date, category } = el;
             return (
               <tr key={_id} style={{ height: 40 }}>
-                <td>{date.split('-').reverse().join('-')}</td>
+                <td>{date.split('-').reverse().join('.')}</td>
                 <td>{description}</td>
                 <td>{categoryOrkToEng(category)}</td>
                 <td style={{ color }}>

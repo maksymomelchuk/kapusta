@@ -89,3 +89,17 @@ export const ButtonWrap = styled.div`
     margin-left: 32px;
   }
 `;
+
+export const StyledWhiteButton = styled.button`
+  padding: 12px 34px;
+  border: 2px solid #f5f6fb;
+  background-color: #fff;
+  border-radius: 16px;
+  color: #52555f;
+  font-size: 12px;
+  font-weight: 700;
+  font-family: inherit;
+  text-align: center;
+  letter-spacing: 0.02em;
+  line-height: 1.17;
+`;

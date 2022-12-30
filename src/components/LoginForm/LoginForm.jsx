@@ -1,13 +1,10 @@
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { ReactComponent as GoogleSvg } from 'images/google.svg';
-import { useState, useRef, useEffect } from 'react';
-import { gsap, Power3 } from 'gsap';
-import { useMatchMedia } from 'hooks/use-match-media';
 
 import {
   StyledformRegister,
   StyledpromtText,
-  StyledanimationGoogle,
   StyledLinkbtnGoogle,
   StyledlabelText,
   StyledpromtText1,
@@ -18,10 +15,8 @@ import {
   StyledNavlink,
 } from './LoginForm.styled';
 import { logIn } from 'redux/auth/operations';
-// import { googleLoginAPI } from 'services/apiAuth';
 
 export const LoginForm = () => {
-  const { isMobile } = useMatchMedia();
   const dispatch = useDispatch();
 
   const handleSubmit = event => {
@@ -30,11 +25,6 @@ export const LoginForm = () => {
 
     dispatch(logIn({ email: email.value, password: password.value }));
   };
-
-  // const handleGoogleAuth = async () => {
-  //   const response = await googleLoginAPI();
-  //   console.log('response', response);
-  // };
 
   const blurHandler = e => {
     switch (e.target.name) {
@@ -82,34 +72,14 @@ export const LoginForm = () => {
   );
   const [errorSymbol, setErrorSymbol] = useState('*');
 
-  let formRef = useRef(null);
-  useEffect(() => {
-    !isMobile &&
-      gsap.fromTo(
-        formRef,
-        2,
-        {
-          opacity: 0,
-          y: -800,
-        },
-        {
-          y: 0,
-          opacity: 1,
-          ease: Power3.easeInOut,
-        }
-      );
-  }, [isMobile]);
-
   return (
-    <StyledformRegister onSubmit={handleSubmit} ref={el => (formRef = el)}>
+    <StyledformRegister onSubmit={handleSubmit}>
       <StyledpromtText>
         You can log in with your Google Account:
       </StyledpromtText>
-      <StyledanimationGoogle>
-        <StyledLinkbtnGoogle href="https://kapusta-backend.goit.global/auth/google">
-          <GoogleSvg />
-        </StyledLinkbtnGoogle>
-      </StyledanimationGoogle>
+      <StyledLinkbtnGoogle href="https://kapusta-backend.goit.global/auth/google">
+        <GoogleSvg />
+      </StyledLinkbtnGoogle>
       <StyledpromtText1>
         Or log in using an email and password, after registering:
       </StyledpromtText1>
